@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Students</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--Boostrap Js-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div id="container">
+    <header class="jumbotron text-center">
+      <img src="/img/Start-image.png" class="img-fluid" alt="start-image">
+    </header>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <a href="#" class="navbar-brand">NavBar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ">
+          <li class="nav-item active">
+            <a class="nav-link " href="students.html">Students</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="courses.html">Courses</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="trainers.html">Trainers</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link " href="assignments.html">Assignments</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="trainers-per-course.html">trainers per course</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="students-per-course.html">Students per course</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="assignments-per-course.html">Assignments per Course</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="Assignments-per-Student-per-Course.html">Assignments per Student per
+              Course</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Navigation -->
+
+    <div class="row">
+      <div class="col-lg-5 offset-lg-1 my-5">
+        <p class="bg-primary"><strong>Please fill the form below:</strong></p>
+        <form action="">
+          <div class="form-group">
+            <label for="firstname">First Name :</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="George" required>
+            <div class="alert alert-danger" id="firstname-error">Success or Failure </div>
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name :</label>
+            <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Karatzas" required>
+            <div class="alert alert-danger" id="lname_error_message">Success or failure</div>
+          </div>
+          <div class="form-group">
+            <label for="date-of-birth">Date of Birth:</label>
+            <input type="date" class="form-control" id="date-of-birth" name="date-of-birth" required>
+            <div class="alert alert-danger" id="date_error_message">This information is required.</div>
+          </div>
+          <div class="form-group">
+            <label for="tuition-fees">Tuition Fees:</label>
+            <input type="number" class="form-control" id="tuition-fees" name="tuition-fees" min="1" required>
+            <div class="alert alert-danger" id="tuitonfees_error_message">This information is required.</div>
+          </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+      <!--End Add form-->
+      </form>
+      <div class="col-lg-5 offset-lg-1 my-5">
+        <p class="bg-primary"><strong>Edit the form below</strong></p>
+        <form action="">
+          <div class="form-group">
+            <label for="firstName">First Name :</label>
+            <input type="text" class="form-control" id="firstname" name="firstName" placeholder="George" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name :</label>
+            <input type="text" class="form-control" id="lastName" palceholder="Karatzas" name="lastName" required>
+          </div>
+          <div class="form-group">
+            <label for="date-of-birth">Date of Birth:</label>
+            <input type="date" class="form-control" id="date-of-birth" name="date-of-birth" required>
+
+          </div>
+          <div class="form-group">
+            <label for="tuition-fees">Tuition Fees:</label>
+            <input type="number" class="form-control" id="tuition-fees" name="tuition-fees" min="1" required>
+
+          </div>
+          <button type="submit" class="btn btn-primary">Edit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  <!--End Edit form-->
+
+  <div>
+    <footer>
+      <p class="jumbotron text-center">Copyright &copy; 2022 Education, Inc. All rights reserved.
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      //------- HIDE ALL ELEMENTS --------
+
+
+      $("#firstname-error").hide()
+      $("#lname_error_message").hide()
+      $("#date_error_message").hide()
+      $("#tuitonfees_error_message").hide()
+
+      const error_fname = false
+      const error_lname = false
+
+
+      $("#firstname").focusout(() => checkFirstName())
+      $("#last-name").focusout(() => checkLastName())
+      $("#email").focusout(() => checkEmail())
+      $("#password").focusout(() => checkPassword())
+      $("#date-of-birth").focusout(() => dateOfCourseCheck())
+
+      function checkFirstName() {
+        const pattern = /^[a-zA-Z]*$/;
+        const firstName = $("#firstname").val().toUpperCase()
+        if (pattern.test(firstName) && firstName !== "") {
+          $("#firstname-error").hide()
+          $("#firstname").css("border-bottom", "2px solid #34F458")
+        } else {
+          $("#firstname-error").html("Should contain only Characters")
+          $("#firstname-error").show()
+          $("#firstname").css("border-bottom", "2px solid #F90A0A")
+          error_fname = true
+        }
+      }
+
+      function checkLastName() {
+        const pattern = /^[a-zA-Z]*$/;
+        const lastName = $("#last-name").val().toUpperCase()
+        if (pattern.test(lastName) && lastName !== "") {
+          $("#lname_error_message").hide()
+          $("#last-name").css("border-bottom", "2px solid #34F458")
+        } else {
+          $("#lname_error_message").html("Should contain only Characters")
+          $("#lname_error_message").show()
+          $("#last-name").css("border-bottom", "2px solid #F90A0A")
+          error_lname = true
+        }
+      }
+
+    })
+  </script>
+
+</body>
+
+</html>
